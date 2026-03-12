@@ -4,74 +4,74 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-
-<script>
-async function closeAfter3Seconds(){
-
-  try{
-    await liff.init({ liffId: "2009339330-tZLIvLQ4" }); // LIFF ID
-  }catch(e){}
-
-  setTimeout(function(){
-
-    if (typeof liff !== "undefined" && liff.isInClient()) {
-      liff.closeWindow(); // LINE内ブラウザ
-    } else {
-      window.close(); // 通常ブラウザ
-    }
-
-  },3000);
-}
-
-window.onload = closeAfter3Seconds;
-</script>
-
 <style>
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial;
   background: linear-gradient(135deg,#d8f1cf,#fdeff2);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  padding:25px 20px;
-  text-align:center;
-  min-height:100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+  min-height: 100vh;
 }
 
-h1{
-  color:#4a6b63;
-  font-size:32px;
-  margin:20px 0;
+h1 { 
+  color: #4a6b63; 
+  font-size: 32px; 
+  margin-bottom: 15px; 
 }
 
-p{
-  font-size:20px;
+p { 
+  color: #333; 
+  font-size: 25px; 
+  margin-bottom: 30px; 
 }
 
-img.character{
-  width:200px;
-  max-width:70%;
-  margin-bottom:30px;
+img.character { 
+  width: 400px; 
+  margin-bottom: 25px; 
+}
+
+.button {
+  padding: 14px 30px;
+  border-radius: 12px;
+  background: #7ec8a5;
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #6bb596;
 }
 </style>
+
+<script>
+function closePage(){
+  window.close();
+}
+</script>
+
 </head>
 
 <body>
 
-<img class="character" src="character.png">
+<img class="character" src="character.png" alt="オリジナルキャラクター">
 
 <h1>ご記入ありがとうございました！</h1>
 
 <p>
 お薬が準備できるまで<br>
-少々お待ちください
+少々お待ちください。
 </p>
 
-<p style="font-size:14px;color:#666;">
-この画面は3秒後に閉じます
-</p>
+<button class="button" onclick="closePage()">
+画面を閉じる
+</button>
 
 </body>
 </html>
