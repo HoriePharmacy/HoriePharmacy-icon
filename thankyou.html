@@ -3,65 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+<script>
+async function closeAfter3Seconds(){
+
+  try{
+    await liff.init({ liffId: "2009339330-tZLIvLQ4" }); // LIFF ID
+  }catch(e){}
+
+  setTimeout(function(){
+
+    if (typeof liff !== "undefined" && liff.isInClient()) {
+      liff.closeWindow(); // LINE内ブラウザ
+    } else {
+      window.close(); // 通常ブラウザ
+    }
+
+  },3000);
+}
+
+window.onload = closeAfter3Seconds;
+</script>
+
 <style>
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial;
-    background: linear-gradient(135deg,#d8f1cf,#fdeff2);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 15px; /* 画面幅に合わせて余白を縮小 */
-    text-align: center;
-    min-height: 100vh; /* スマホ縦画面で中央揃え */
-    box-sizing: border-box;
-  }
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial;
+  background: linear-gradient(135deg,#d8f1cf,#fdeff2);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:25px 20px;
+  text-align:center;
+  min-height:100vh;
+}
 
-  h1 {
-    color: #4a6b63;
-    font-size: 22px;
-    margin: 15px 0;
-    line-height: 1.3;
-  }
+h1{
+  color:#4a6b63;
+  font-size:32px;
+  margin:20px 0;
+}
 
-  p {
-    color: #333;
-    font-size: 15px;
-    margin: 10px 0 25px 0;
-    line-height: 1.4;
-  }
+p{
+  font-size:20px;
+}
 
-  .button {
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: 12px;
-    background: #7ec8a5;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    transition: 0.2s;
-  }
-
-  .button:hover { background: #6bb596; }
-
-  img.character {
-    width: 100px; /* 小さめにしてスマホ画面でも収まる */
-    max-width: 40%; /* 画面幅の40%を最大に */
-    margin-bottom: 20px;
-  }
-
-  /* 小さい画面用の微調整 */
-  @media (max-width: 400px) {
-    h1 { font-size: 20px; }
-    p { font-size: 14px; }
-    img.character { width: 80px; max-width: 50%; }
-  }
+img.character{
+  width:200px;
+  max-width:70%;
+  margin-bottom:30px;
+}
 </style>
 </head>
+
 <body>
-  <img class="character" src="character.png" alt="オリジナルキャラクター">
-  <h1>ご記入ありがとうございました！</h1>
-  <p>お薬が準備できるまで、少々お待ちください。</p>
+
+<img class="character" src="character.png">
+
+<h1>ご記入ありがとうございました！</h1>
+
+<p>
+お薬が準備できるまで<br>
+少々お待ちください
+</p>
+
+<p style="font-size:14px;color:#666;">
+この画面は3秒後に閉じます
+</p>
+
 </body>
 </html>
